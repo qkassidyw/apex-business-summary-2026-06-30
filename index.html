@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Business Summary & Gap Analysis · June 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stripe-purple: #533afd;
+            --purple-hover: #4434d4;
+            --deep-navy: #061b31;
+            --dark-slate: #273951;
+            --slate: #64748d;
+            --white: #ffffff;
+            --border: #e5edf5;
+            --success-green: #15be53;
+            --success-text: #108c3d;
+            --warning-lemon: #9b6829;
+            --danger-ruby: #ea2261;
+            --brand-dark: #1c1e54;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-feature-settings: "ss01";
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--slate);
+            background: var(--white);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 300;
+            color: var(--deep-navy);
+            font-feature-settings: "ss01";
+        }
+        
+        h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            letter-spacing: -0.96px;
+            margin-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--slate);
+            margin-bottom: 48px;
+        }
+        
+        h2 {
+            font-size: 32px;
+            line-height: 1.10;
+            letter-spacing: -0.64px;
+            margin-top: 48px;
+            margin-bottom: 24px;
+        }
+        
+        h3 {
+            font-size: 22px;
+            line-height: 1.10;
+            letter-spacing: -0.22px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .metric {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 20px;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        
+        .metric-value {
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--deep-navy);
+            letter-spacing: -0.64px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 300;
+            font-feature-settings: "ss01";
+        }
+        
+        .status-red {
+            background: rgba(234,34,97,0.2);
+            color: #c71e4f;
+            border: 1px solid rgba(234,34,97,0.4);
+        }
+        
+        .status-yellow {
+            background: rgba(155,104,41,0.2);
+            color: var(--warning-lemon);
+            border: 1px solid rgba(155,104,41,0.4);
+        }
+        
+        .status-green {
+            background: rgba(21,190,83,0.2);
+            color: var(--success-text);
+            border: 1px solid rgba(21,190,83,0.4);
+        }
+        
+        .gap-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .gap-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--deep-navy);
+            margin-bottom: 8px;
+        }
+        
+        .gap-description {
+            font-size: 14px;
+            color: var(--slate);
+            line-height: 1.5;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 400;
+            margin-right: 8px;
+        }
+        
+        .priority-p0 {
+            background: rgba(234,34,97,0.15);
+            color: #c71e4f;
+        }
+        
+        .priority-p1 {
+            background: rgba(155,104,41,0.15);
+            color: var(--warning-lemon);
+        }
+        
+        ul {
+            margin: 16px 0 16px 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: var(--slate);
+        }
+        
+        .dark-section {
+            background: var(--brand-dark);
+            color: rgba(255,255,255,0.9);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 48px 0;
+        }
+        
+        .dark-section h2 {
+            color: var(--white);
+        }
+        
+        .dark-section .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .document-link {
+            display: inline-block;
+            color: var(--stripe-purple);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            margin-right: 16px;
+            margin-top: 8px;
+        }
+        
+        .document-link:hover {
+            color: var(--purple-hover);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--slate);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apex Business Summary</h1>
+        <div class="subtitle">Strategic Overview & Gap Analysis · June 30, 2026</div>
+        
+        <!-- Executive Summary -->
+        <div class="card">
+            <h3>Executive Summary</h3>
+            <p>Apex is an AI startup building consumer-facing AI agent infrastructure. The company is in a critical stabilization phase with parallel revenue, customer health, and product migration challenges. Current state: 11 of 23 customers (48%) in danger zone with active churn risk, $90k revenue collected (targeting $358k hiring plan), and CTO search in progress targeting offer by July 15.</p>
+        </div>
+        
+        <!-- Key Metrics -->
+        <h2>Business Metrics</h2>
+        <div class="metric-grid">
+            <div class="metric">
+                <div class="metric-label">Current Customers</div>
+                <div class="metric-value">23</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">At-Risk Customers</div>
+                <div class="metric-value" style="color: #c71e4f;">11 <span style="font-size: 16px; font-weight: 400;">(48%)</span></div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Revenue Collected</div>
+                <div class="metric-value">$90k</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Waitlist Size</div>
+                <div class="metric-value">25k</div>
+            </div>
+        </div>
+        
+        <!-- Status by Function -->
+        <h2>Health by Function</h2>
+        <div class="card">
+            <h3>Customer Health <span class="status-badge status-red">RED</span></h3>
+            <ul>
+                <li><strong>48% churn risk</strong> — 11 of 23 customers in danger zone</li>
+                <li>6 customers churned this month</li>
+                <li><strong>Recent Actions:</strong> Customer visibility dashboard created, health monitoring live, automated onboarding launched</li>
+                <li><strong>Strategy:</strong> "Done with you" repositioning (no employee integrator needed), customer build sessions, new CS resources deployed</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3>Revenue <span class="status-badge status-yellow">YELLOW → Improving</span></h3>
+            <ul>
+                <li>$90k collected this period ($30k single-day collection on June 18)</li>
+                <li>Pipeline reactivated with customer segmentation underway</li>
+                <li>Target: 20-30 customers at $25k for self-funding by Month 2</li>
+                <li>Video FAQs launched for sales enablement</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3>Resources <span class="status-badge status-yellow">YELLOW → Improving</span></h3>
+            <ul>
+                <li>Team capacity stretched but new hires onboarded</li>
+                <li><strong>Recent Additions:</strong> Andrew Sponsler (Customer Success Lead), Tyler Andrew (Customer Tech Engineer)</li>
+                <li><strong>In Progress:</strong> CTO/Tech Lead search (target offer July 15), evaluating fractional support</li>
+                <li>$358k hiring plan pending Ventures approval</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3>Product <span class="status-badge status-yellow">YELLOW → Improving</span></h3>
+            <ul>
+                <li>Platform stabilized with Hermes migration plan in place</li>
+                <li>Onboarding flow revised to increase retention and satisfaction</li>
+                <li>Token reduction strategy identified (memory/heartbeat optimization)</li>
+                <li>Automated onboarding flow prototype built (Hunter)</li>
+                <li><strong>Blockers:</strong> Hermes migration execution, product feature backlog for 25k waitlist</li>
+            </ul>
+        </div>
+        
+        <!-- Strategic Priorities -->
+        <div class="dark-section">
+            <h2>Current Priorities</h2>
+            <div class="card">
+                <h4 style="color: rgba(255,255,255,0.9); margin-bottom: 12px;"><span class="priority-badge priority-p0">P0</span> Stop Bleeding</h4>
+                <ul style="color: rgba(255,255,255,0.8);">
+                    <li>Stop churn bleeding — visibility dashboards live, revised onboarding launching</li>
+                    <li>Execute Hermes migration</li>
+                    <li>Finalize fractional tech lead to support team</li>
+                    <li>Scorecard visibility across all orgs</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4 style="color: rgba(255,255,255,0.9); margin-bottom: 12px;"><span class="priority-badge priority-p1">P1</span> Revenue & Scale</h4>
+                <ul style="color: rgba(255,255,255,0.8);">
+                    <li>Rebuild revenue pipeline with clear sales goals</li>
+                    <li>Refund policy rollout</li>
+                    <li>Video FAQ expansion</li>
+                    <li>Token reduction implementation for customer cost savings</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Gap Analysis -->
+        <h2>Gap Analysis</h2>
+        
+        <h3>🔴 Critical Gaps (Immediate Action Required)</h3>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p0">P0</span> Customer Retention Infrastructure</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> 48% churn risk with 6 customers lost this month indicates fundamental retention failure. Dashboards created but no evidence of proactive health interventions, success playbooks, or early warning response protocols.<br><br>
+                <strong>Impact:</strong> At current churn rate, even aggressive pipeline growth won't offset customer loss. Revenue and reputation damage compounds.<br><br>
+                <strong>Action Needed:</strong> Implement weekly customer health reviews, assign health scores to every account, create intervention playbooks for yellow/red accounts, automate at-risk alerts to CS team.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p0">P0</span> Leadership Gap — CTO Not Hired</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> Target offer date July 15 (2 weeks away) but CTO search shows no finalist stage. Fractional support evaluation suggests low confidence in closing strong technical leadership.<br><br>
+                <strong>Impact:</strong> Hermes migration blocked, product velocity capped, engineering team lacks technical direction, hiring plan ($358k) can't execute without technical leader.<br><br>
+                <strong>Action Needed:</strong> If July 15 slips, immediately hire fractional VP Eng (2-3 days/week) to unblock Hermes migration and provide interim technical leadership. Extend CTO search timeline but maintain momentum.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p0">P0</span> Revenue Model Clarity</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> $90k collected but unclear monthly run rate, contract structure, or payment timing. $358k hiring plan pending but no clear path to self-funding beyond "20-30 customers at $25k."<br><br>
+                <strong>Impact:</strong> Can't forecast runway, hiring plan can't be approved without revenue model, team unclear on sales targets.<br><br>
+                <strong>Action Needed:</strong> Document revenue model with monthly recurring revenue (MRR), average contract value (ACV), contract terms, payment schedules. Calculate exact customer count needed for self-funding and break-even.
+            </div>
+        </div>
+        
+        <h3>🟡 High-Priority Gaps (Address Within 2 Weeks)</h3>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p1">P1</span> Product-Market Fit Validation</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> 25k waitlist but 48% churn risk suggests product not yet solving customer pain reliably. "Done with you" pivot indicates positioning confusion — are customers buying done-for-you service or self-serve platform?<br><br>
+                <strong>Impact:</strong> Can't scale sales until product stabilizes. Waitlist becomes liability if conversion triggers churn spiral.<br><br>
+                <strong>Action Needed:</strong> Interview churned customers (exit interviews), analyze success patterns in healthy 12 customers, document exact use cases where product delivers value reliably. Freeze waitlist conversion until retention stabilizes.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p1">P1</span> Operational Discipline & Visibility</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> Daily updates mention "scorecards created" but no evidence of consistent tracking (only 2 of 5 team members submitted scorecards). L10 meetings scheduled but no documented outcomes, decisions, or accountability structure.<br><br>
+                <strong>Impact:</strong> Team unclear on priorities, no shared accountability, leaders flying blind on actual progress vs. activity.<br><br>
+                <strong>Action Needed:</strong> Mandate weekly scorecard submissions (fire-drill if <100% compliance), document L10 decisions in shared doc, create single source of truth for priorities/status that entire team references daily.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title"><span class="priority-badge priority-p1">P1</span> Technical Debt — Hermes Migration</div>
+            <div class="gap-description">
+                <strong>Gap:</strong> Migration plan exists but execution blocked. No clear timeline, no staged rollout plan, no rollback strategy documented.<br><br>
+                <strong>Impact:</strong> Product velocity capped, customer experience compromised by legacy infrastructure, technical team morale risk if migration continues to drag.<br><br>
+                <strong>Action Needed:</strong> Scope minimum viable migration (can you migrate 5 customers first?), set hard deadline (e.g., August 1), assign single DRI with daily check-ins. If CTO not hired by July 15, fractional VP Eng must own this.
+            </div>
+        </div>
+        
+        <h3>🟢 Medium-Priority Gaps (Address Within 30 Days)</h3>
+        
+        <div class="gap-item">
+            <div class="gap-title">Sales Process Documentation</div>
+            <div class="gap-description">
+                Pipeline "reactivated" but no documented sales process, qualification criteria, or conversion metrics. Video FAQs created but unclear if they're driving pipeline velocity or just content for content's sake.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title">Cost Structure & Unit Economics</div>
+            <div class="gap-description">
+                Token reduction identified as priority but no clarity on customer COGS, gross margin, or burn rate. Can't evaluate pricing strategy or profitability without unit economics.
+            </div>
+        </div>
+        
+        <div class="gap-item">
+            <div class="gap-title">Team Communication Cadence</div>
+            <div class="gap-description">
+                Daily updates going to multiple channels (MM channel, #team) suggests communication sprawl. No clear single source of truth for "what's actually happening right now?"
+            </div>
+        </div>
+        
+        <!-- Key Documents -->
+        <h2>Strategic Documents Referenced</h2>
+        <div class="card">
+            <a href="https://docs.google.com/document/d/1-JiIY0HIyE8Qpu6neKZBcPF2Vd1K6AoGKttA0JLReT0/edit" class="document-link">OPERATION HEARTBEAT · Customer Stabilization Campaign</a>
+            <a href="https://docs.google.com/spreadsheets/d/1MR1gwJOvHRKOR9XR3eFlB_eHML14Cu6A4TxAJ48WQvk/edit" class="document-link">Apex Revenue Scorecard</a>
+            <a href="https://docs.google.com/spreadsheets/d/15KynhaJ575fe1YkQRRjC-83RUGAkls7VMttvuHJUucs/edit" class="document-link">Apex Roadmap</a>
+            <a href="https://apex-scorecards.apextunnel.com" class="document-link">Live Scorecard Dashboard</a>
+        </div>
+        
+        <!-- Recommendations -->
+        <h2>Immediate Recommendations</h2>
+        <div class="card">
+            <ol style="margin-left: 20px;">
+                <li style="margin-bottom: 16px;"><strong>Declare Customer Health Emergency</strong> — Move from "monitoring" to "intervention mode." Assign every at-risk customer a DRI by EOD tomorrow. Weekly health reviews with CEO required until churn stabilizes.</li>
+                <li style="margin-bottom: 16px;"><strong>CTO Decision Deadline</strong> — If no finalist by July 8, pivot to fractional VP Eng immediately. Hermes migration and hiring plan cannot wait.</li>
+                <li style="margin-bottom: 16px;"><strong>Revenue Model Workshop</strong> — Block 4 hours this week with finance/leadership to document revenue model, calculate exact self-funding requirements, and align team on targets.</li>
+                <li style="margin-bottom: 16px;"><strong>Scorecard Compliance</strong> — Make scorecard submission mandatory. 100% submission by Friday or escalate as operational breakdown.</li>
+                <li style="margin-bottom: 16px;"><strong>Waitlist Freeze</strong> — Stop converting waitlist to customers until retention stabilizes above 70%. Better to have 20 happy customers than 40 churning customers.</li>
+            </ol>
+        </div>
+        
+        <div class="footer">
+            Generated June 30, 2026 · Based on Drive documents, Slack communications, and calendar data
+        </div>
+    </div>
+</body>
+</html>
